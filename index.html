@@ -20,7 +20,7 @@
     </header>
 <!-- <img src="img/meme(square)/1.jpg" alt="" onclick="onImgSelect()"> -->
 
-    <section class="gallery">
+    <section class="gallery ">
         <!-- <div class="img-container">
             <img class="img" src="" alt="">
         </div>
@@ -76,12 +76,11 @@
 
     <section class="editor hide">
         <div class="canvas-container">
-            
-            <canvas id="my-canvas" height="400" width="400"></canvas>
+            <!-- <canvas id="my-canvas" height="450" width="450"></canvas> -->
         </div>
         <label>
             enter text:
-            <input type="text" id="test" name="test" placeholder="" oninput="onchangeTxt(this.value)"/>
+            <input type="text" id="test" name="test" placeholder="" onchange="onchangeTxt(this)"/>
         </label>
         <button class="switchTexts" onclick="switchTexts()"> switch lines 🔁</button>
     </section>

@@ -8,7 +8,7 @@ var gImgs = [
     },
     {
         id: 2,
-        url: 'img/meme-imgs(square)/2.jpg',
+        url: 'img/meme(square)/2.jpg',
         keywords: ['funny', 'cat']
     },
     {
@@ -31,4 +31,9 @@ var gImgs = [
 
 function getImgs() {
     return gImgs
+}
+
+function findImg(id){
+    console.log('id:', id)
+    return gImgs.find(img => img.id === id)
 }

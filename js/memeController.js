@@ -14,12 +14,24 @@ function initMeme(imgId) {
 
 function renderMeme() {
     const meme = getMeme()
-    console.log('renderMeme : meme:', meme)
+
+    const strHTMLs =
+    `
+    <canvas id="my-canvas" height="450" width="450"></canvas>
+    `
+    document.querySelector('.canvas-container').innerHTML = strHTMLs
+
     gElCanvas = document.querySelector('#my-canvas');
     gCtx = gElCanvas.getContext('2d');
+
+    var image = findImg(meme.selectedImgId)
+    var url = image.url
+    renderCanvasContent(url)
+    
     // resizeCanvas()
     // drawTexts()
-    drawTexts(meme)
+    
+    // drawTexts(meme)
 
 }
 
@@ -29,10 +41,9 @@ function resizeCanvas() {
     gElCanvas.height = elContainer.offsetHeight
 }
 
-
 function drawText(line, x, y) {
-    console.log(' drawText   line , x,y:', line , x,y)
     gCtx.beginPath()
+    // gCtx.linejoin = 'round'
     gCtx.textBaseline = 'middle';
     gCtx.textAlign = line.align;
     gCtx.lineWidth = 1;
@@ -42,6 +53,7 @@ function drawText(line, x, y) {
     gCtx.strokeStyle = 'black';
     gCtx.strokeText(line.txt, x, y);
     gCtx.closePath()
+
 }
 
 function drawTexts(meme) {
@@ -66,13 +78,14 @@ function drawTexts(meme) {
         // if (gElCanvas.width - textDimensions.width <= 100) {
         //     splitToRows(line)
         // }
-console.log('drawTexts - line , x,y:', line , x,y)
         drawText(line, x, y)
     })
 }
 
-function onchangeTxt(txt) {
-    setLineTxt(txt, rowIdx)
+function onchangeTxt(elText) {
+    elText.innerHTML = ''
+    setLineTxt(elText.value, rowIdx)
+
     renderMeme()
 }
 
@@ -84,21 +97,27 @@ function addListenersMeme() {
     })
 }
 
-
-function setImg(image) {
+function renderCanvasContent(image) {
+    console.log(':setImg')
     var img = new Image()
     img.src = image
     img.onload = () => {
         gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
+        const meme = getMeme()
+        drawTexts(meme)
     }
-
 }
 
 function toggleCanvas() {
     document.querySelector('.editor').classList.toggle('hide')
 }
 
-function switchTexts(){
-    if (rowIdx === 0 )rowIdx = 1
+function switchTexts() {
+    if (rowIdx === 0) rowIdx = 1
     else rowIdx = 0
+}
+
+function clearCanvas() {
+    gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height);
+
 }

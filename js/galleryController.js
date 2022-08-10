@@ -21,7 +21,7 @@ function renderGallery() {
 
 function onImgSelect(img, imgId){
     setImg(img)
-    initMeme(imgId)
+    // initMeme(imgId)
     toggleGallery()
     toggleCanvas()
 }
@@ -46,3 +46,4 @@ function addTouchListeners() {
     // gElCanvas.addEventListener('touchstart', onDown)
     gElCanvas.addEventListener('touchend', onImgSelect)
 }
+

@@ -2,7 +2,7 @@
 
 
 var gMeme = {
-    selectedImgId: 5,
+    selectedImgId: 2,
     selectedLineIdx: 0,
     lines: [
         {
@@ -41,7 +41,7 @@ function addMeme(imgId, lines = ['', '']) {
         gMeme.lines.push(
             {
                 txt: line,
-                size: 30,
+                size: 20,
                 align: 'center',
                 color: 'blue'
             }
