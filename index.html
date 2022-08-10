@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+
+    <title>Meme Generator</title>
+</head>
+<!-- onload="initGallery()" -->
+<body onload="initGallery()">
+    <header class="header">
+        <div class="main-header ">
+            <div class="main-logo">
+                <img src="img/LOGO/LOGO.png" alt="">
+            </div>
+        </div>
+    </header>
+<!-- <img src="img/meme(square)/1.jpg" alt="" onclick="onImgSelect()"> -->
+
+    <section class="gallery">
+        <!-- <div class="img-container">
+            <img class="img" src="" alt="">
+        </div>
+        <div class="img-container">
+            <img class="img" src="img/meme-imgs(square)/2.jpg" alt="">
+        </div>
+        <div class="img-container">
+            <img class="img" src="img/meme-imgs(square)/3.jpg" alt="">
+        </div>
+        <div class="img-container">
+            <img class="img" src="img/meme-imgs(square)/4.jpg" alt="">
+        </div>
+        <div class="img-container">
+            <img class="img" src="img/meme-imgs(square)/5.jpg" alt="">
+        </div>
+        <div class="img-container">
+            <img class="img" src="img/meme-imgs(square)/6.jpg" alt="">
+        </div>
+        <div class="img-container">
+            <img class="img" src="img/meme-imgs (square)/7.jpg" alt="">
+        </div>
+        <div class="img-container">
+            <img class="img" src="img/meme-imgs (square)/9.jpg" alt="">
+        </div>
+        <div class="img-container">
+            <img class="img" src="img/meme-imgs (square)/10.jpg" alt="">
+        </div>
+        <div class="img-container">
+            <img class="img" src="img/meme-imgs (square)/11.jpg" alt="">
+        </div>
+        <div class="img-container">
+            <img class="img" src="img/meme-imgs (square)/12.jpg" alt="">
+        </div>
+        <div class="img-container">
+            <img class="img" src="img/meme-imgs (square)/13.jpg" alt="">
+        </div>
+        <div class="img-container">
+            <img class="img" src="img/meme-imgs (square)/14.jpg" alt="">
+        </div>
+        <div class="img-container">
+            <img class="img" src="img/meme-imgs (square)/15.jpg" alt="">
+        </div>
+        <div class="img-container">
+            <img class="img" src="img/meme-imgs (square)/16.jpg" alt="">
+        </div>
+        <div class="img-container">
+            <img class="img" src="img/meme-imgs (square)/17.jpg" alt="">
+        </div>
+        <div class="img-container">
+            <img class="img" src="img/meme-imgs (square)/18.jpg" alt="">
+        </div> -->
+    </section>
+
+    <section class="editor hide">
+        <div class="canvas-container">
+            
+            <canvas id="my-canvas" height="400" width="400"></canvas>
+        </div>
+        <label>
+            enter text:
+            <input type="text" id="test" name="test" placeholder="" oninput="onchangeTxt(this.value)"/>
+        </label>
+        <button class="switchTexts" onclick="switchTexts()"> switch lines 🔁</button>
+    </section>
+
+    <script src="js/service/memeService.js"></script>
+    <script src="js/service/galleryService.js"></script>
+    <script src="js/galleryController.js"></script>
+    <script src="js/memeController.js"></script>
+</body>
+
+</html>
