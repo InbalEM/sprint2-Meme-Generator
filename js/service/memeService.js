@@ -25,13 +25,14 @@ function getMeme() {
 }
 
 function setLineTxt(text, idx) {
-    console.log('gMeme:',gMeme )
     gMeme.lines[idx].txt = text
-    console.log('gMeme:',gMeme )
 }
 
-function addMeme(imgId, lines = ['', '']) {
+function setColor(color, idx) {
+    gMeme.lines[idx].color = color
+}
 
+function addMeme(imgId, lines = ['top line', 'bottom line']) {
     gMeme = {
         selectedImgId: imgId,
         selectedLineIdx: 0,
@@ -43,7 +44,7 @@ function addMeme(imgId, lines = ['', '']) {
                 txt: line,
                 size: 20,
                 align: 'center',
-                color: 'blue'
+                color: 'black'
             }
         )
     )

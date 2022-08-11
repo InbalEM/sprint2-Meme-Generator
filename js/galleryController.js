@@ -1,6 +1,6 @@
 'use strict'
 
-function initGallery(){
+function initGallery() {
     renderGallery()
     // addListeners()
 }
@@ -8,26 +8,26 @@ function initGallery(){
 function renderGallery() {
     const images = getImgs()
     // console.log('images:', images)
-    const strHTMLs =images.map(img => 
+    const strHTMLs = images.map(img =>
         `
         <div class="img-container">
-            <img class="img" onclick="onImgSelect(this.src,${img.id} )" src="img/meme(square)/${img.id}.jpg">
+            <img class="img" onclick="onImgSelect('${img.url}',${img.id} )" src="img/meme(square)/${img.id}.jpg">
         </div>
         `
         // console.log('img.url:', img.url)
-        )
-        document.querySelector('.gallery').innerHTML = strHTMLs.join('')
+    )
+    document.querySelector('.gallery').innerHTML = strHTMLs.join('')
 }
 
-function onImgSelect(img, imgId){
-    setImg(img)
-    // initMeme(imgId)
+function onImgSelect(imgUrl, id) {
+    renderCanvasContent(`'${imgUrl}'`)
+    initMeme(id)
     toggleGallery()
     toggleCanvas()
 }
 
-function toggleGallery(){
-    document.querySelector('.gallery').classList.toggle('hide')  
+function toggleGallery() {
+    document.querySelector('.gallery').classList.toggle('hide')
 }
 
 function addListeners() {

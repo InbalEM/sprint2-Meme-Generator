@@ -3,36 +3,28 @@
 var gElCanvas
 var gCtx
 
-var rowIdx = 0
+var growIdx = 0
 
 function initMeme(imgId) {
     addMeme(imgId)
     renderMeme()
     // addListenersMeme()
-
+    showLineInput()
 }
 
 function renderMeme() {
     const meme = getMeme()
-
     const strHTMLs =
-    `
-    <canvas id="my-canvas" height="450" width="450"></canvas>
-    `
+        `
+            <canvas id="my-canvas" height="450" width="450"></canvas>
+        `
     document.querySelector('.canvas-container').innerHTML = strHTMLs
 
     gElCanvas = document.querySelector('#my-canvas');
     gCtx = gElCanvas.getContext('2d');
-
     var image = findImg(meme.selectedImgId)
     var url = image.url
     renderCanvasContent(url)
-    
-    // resizeCanvas()
-    // drawTexts()
-    
-    // drawTexts(meme)
-
 }
 
 function resizeCanvas() {
@@ -53,11 +45,9 @@ function drawText(line, x, y) {
     gCtx.strokeStyle = 'black';
     gCtx.strokeText(line.txt, x, y);
     gCtx.closePath()
-
 }
 
 function drawTexts(meme) {
-    console.log('drawTexts:', meme)
     let lines = meme.lines
     lines.forEach((line, idx) => {
         if (line.align === 'left') {
@@ -82,13 +72,6 @@ function drawTexts(meme) {
     })
 }
 
-function onchangeTxt(elText) {
-    elText.innerHTML = ''
-    setLineTxt(elText.value, rowIdx)
-
-    renderMeme()
-}
-
 function addListenersMeme() {
     window.addEventListener('resize', () => {
         resizeCanvas()
@@ -98,11 +81,11 @@ function addListenersMeme() {
 }
 
 function renderCanvasContent(image) {
-    console.log(':setImg')
     var img = new Image()
     img.src = image
     img.onload = () => {
         gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
+        // gCtx.drawImage(img, 0, 0)
         const meme = getMeme()
         drawTexts(meme)
     }
@@ -112,12 +95,29 @@ function toggleCanvas() {
     document.querySelector('.editor').classList.toggle('hide')
 }
 
-function switchTexts() {
-    if (rowIdx === 0) rowIdx = 1
-    else rowIdx = 0
-}
-
 function clearCanvas() {
     gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height);
+}
 
+function switchTexts() {
+    if (growIdx === 0) growIdx = 1
+    else growIdx = 0
+    showLineInput()
+}
+
+function showLineInput() {
+    const elTextInput = document.querySelector('[name="test"]')
+    const meme = getMeme()
+    const line = meme.lines[growIdx].txt
+    elTextInput.value = line
+}
+
+function onchangeTxt(elText) {
+    setLineTxt(elText.value, growIdx)
+    renderMeme()
+}
+
+function onchangeColor(color) {
+    setColor(color, growIdx)
+    renderMeme()
 }

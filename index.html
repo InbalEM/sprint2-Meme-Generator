@@ -10,6 +10,7 @@
     <title>Meme Generator</title>
 </head>
 <!-- onload="initGallery()" -->
+
 <body onload="initGallery()">
     <header class="header">
         <div class="main-header ">
@@ -18,9 +19,9 @@
             </div>
         </div>
     </header>
-<!-- <img src="img/meme(square)/1.jpg" alt="" onclick="onImgSelect()"> -->
+    <!-- <img src="img/meme(square)/1.jpg" alt="" onclick="onImgSelect()"> -->
 
-    <section class="gallery ">
+    <section class="gallery">
         <!-- <div class="img-container">
             <img class="img" src="" alt="">
         </div>
@@ -80,9 +81,11 @@
         </div>
         <label>
             enter text:
-            <input type="text" id="test" name="test" placeholder="" onchange="onchangeTxt(this)"/>
+            <input type="text" id="test" name="test" oninput="onchangeTxt(this)" />
         </label>
         <button class="switchTexts" onclick="switchTexts()"> switch lines 🔁</button>
+        <input type="color" id="color" name="color" form="frmRegister" value="black"
+            onchange="onchangeColor(this.value)" />
     </section>
 
     <script src="js/service/memeService.js"></script>
