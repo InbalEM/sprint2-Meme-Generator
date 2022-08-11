@@ -1,42 +1,43 @@
 'use strict'
 
+const STORAGE_KEY = 'memeDB'
+const STORAGE_KEY_MEME = 'savedMemesDb'
 
-var gMeme = {
-    selectedImgId: 2,
-    selectedLineIdx: 0,
-    lines: [
-        {
-            txt: 'I sometimes eat Falafel',
-            size: 20,
-            align: 'center',
-            color: 'red'
-        },
-        {
-            txt: `line 1\nline 2 \nthird line..`,
-            size: 20,
-            align: 'center',
-            color: 'red'
-        }
-    ]
-}
+var gMemes = []
+var gMeme
+
+var gSavedMemes = []
 
 function getMeme() {
     return gMeme
+}
+
+function getMemeById(id) {
+    gMeme = gMemes[id]
+    return gMeme
+}
+
+function getMemes() {
+    return gMemes
 }
 
 function setLineTxt(text, idx) {
     gMeme.lines[idx].txt = text
 }
 
-function setColor(color, idx) {
-    gMeme.lines[idx].color = color
+function setFillColor(color, idx) {
+    gMeme.lines[idx].fillColor = color
 }
 
-function updateFontSize(incDecBy, idx){
+function setStrokeColor(color, idx) {
+    gMeme.lines[idx].strokeColor = color
+}
+
+function updateFontSize(incDecBy, idx) {
     gMeme.lines[idx].size += incDecBy
 }
 
-function addMeme(imgId, lines = ['top line', 'bottom line']) {
+function addMeme(imgId, lines = ['', '']) {
     gMeme = {
         selectedImgId: imgId,
         selectedLineIdx: 0,
@@ -48,8 +49,26 @@ function addMeme(imgId, lines = ['top line', 'bottom line']) {
                 txt: line,
                 size: 20,
                 align: 'center',
-                color: 'black'
+                fillColor: 'blue',
+                strokeColor: 'black',
             }
         )
     )
+
+}
+
+function saveMemesToStorage(link) {
+    gSavedMemes.unshift(link)
+    gMemes.unshift(gMeme)
+    saveToStorage(STORAGE_KEY, gMemes)
+    saveToStorage(STORAGE_KEY_MEME, gSavedMemes)
+}
+
+function restoreMemes() {
+    gMemes = loadFromStorage(STORAGE_KEY)
+}
+
+function restoreSavedMemes() {
+    gSavedMemes = loadFromStorage(STORAGE_KEY_MEME)
+    return gSavedMemes
 }

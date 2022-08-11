@@ -9,7 +9,6 @@
 
     <title>Meme Generator</title>
 </head>
-<!-- onload="initGallery()" -->
 
 <body onload="initGallery()">
     <header class="main-header-container ">
@@ -19,15 +18,27 @@
             </div>
             <nav class="main-nav">
                 <ul class="main-nav-list flex clean-list">
-                    <li><a class="flex align-center" href="#">gallery</a></li>
-                    <li><a class="flex align-center" href="#">About</a></li>
+                    <li><a class="flex align-center" href="#" onclick="onGalleryLink()">gallery</a></li>
+                    <li><a class="flex align-center" href="#" onclick="onMemesLink()">memes</a></li>
                 </ul>
             </nav>
         </div>
     </header>
-    <!-- <img src="img/meme(square)/1.jpg" alt="" onclick="onImgSelect()"> -->
-
-    <section class="gallery "></section>
+    <section class="gallery-container">
+        <button onclick="onFlexibleMeme(event)">I'm flexible</button>
+        <label for="filterImages">filer
+            <input type="email" id="filterImages" name="filterImages" list="filterList"
+                onchange="onFilterGallery(this.value)" />
+            <datalist id="filterList">
+                <option value="funny" label="funny" />
+                <option value="baby" label="baby" />
+                <option value="cat" label="cat" />
+                <option value="dog" label="dog" />
+                <option value="cute" label="cute" />
+            </datalist>
+        </label>
+        <div class="gallery"></div>
+    </section>
 
     <section class="editor hide">
         <div class="canvas-container">
@@ -39,14 +50,22 @@
                 <input type="text" id="text" name="meme-text" oninput="onchangeTxt(this)" />
             </label>
             <button class="switchTexts" onclick="switchTexts(event)"> switch lines 🔁</button>
-            <input type="color" id="color" name="color" form="frmRegister" value="black"
-                onchange="onchangeColor(this.value)" />
+            <input type="color" id="fillColor" name="fillColor" form="frmRegister" value="blue"
+                onchange="onchangeFillColor(this.value)" />
+            <input type="color" id="strokeColor" name="strokeColor" form="frmRegister" value="black"
+                onchange="onchangeStrokeColor(color)(this.value)" />
             <button class="increase-decrease" onclick="onIncrease(event)">increase</button>
             <button class="increase-decrease" onclick="onDecrease(event)">decrease</button>
+            <button class="save-meme"><a onclick="onSaveMeme(event,this)" href="#">save meme</a></button>
+
 
         </form>
     </section>
 
+    <section class='saved-memes hide'></section>
+
+    <script src="js/service/utils.js"></script>
+    <script src="js/services/storage.service.js"></script>
     <script src="js/service/galleryService.js"></script>
     <script src="js/service/memeService.js"></script>
     <script src="js/galleryController.js"></script>

@@ -8,25 +8,35 @@ var growIdx = 0
 function initMeme(imgId = 2) {
     addMeme(imgId)
     renderMeme()
-    // addListenersMeme()
     showLineInput()
 }
 
 function renderMeme() {
     const meme = getMeme()
-    // const strHTMLs =
-    //     `
-    //         <canvas id="my-canvas" height="450" width="450"></canvas>
-    //     `
-    // document.querySelector('.canvas-container').innerHTML = strHTMLs
-
     gElCanvas = document.querySelector('#my-canvas');
     gCtx = gElCanvas.getContext('2d');
 
     var image = findImg(meme.selectedImgId)
     var url = image.url
-    
-    renderCanvasContent(url)
+
+    renderCanvasContent(url, meme)
+}
+
+function addFlexibleMeme(imgId) {
+    let linesCount = getRandomInt(1, 3)
+    addMeme(imgId)
+    while (linesCount > 0) {
+        let line = getRandomWord(length = 15)
+        setLineTxt(line, linesCount - 1)
+        const fillColor = getRandomColor()
+        setFillColor(fillColor, linesCount - 1)
+        const strokeColor = getRandomColor()
+        setStrokeColor(strokeColor, linesCount - 1)
+        linesCount--
+    }
+    toggleGallery()
+    toggleCanvas()
+    renderMeme()
 }
 
 function resizeCanvas() {
@@ -37,14 +47,13 @@ function resizeCanvas() {
 
 function drawText(line, x, y) {
     gCtx.beginPath()
-    // gCtx.linejoin = 'round'
     gCtx.textBaseline = 'middle';
     gCtx.textAlign = line.align;
     gCtx.lineWidth = 1;
     gCtx.font = `${line.size}px Impact`
-    gCtx.fillStyle = line.color
+    gCtx.fillStyle = line.fillColor
     gCtx.fillText(line.txt, x, y);
-    gCtx.strokeStyle = 'black';
+    gCtx.strokeStyle = line.strokeColor
     gCtx.strokeText(line.txt, x, y);
     gCtx.closePath()
 }
@@ -66,10 +75,6 @@ function drawTexts(meme) {
         } else {
             var y = gElCanvas.height / 2
         }
-        // var textDimensions = gCtx.measureText(line.txt)
-        // if (gElCanvas.width - textDimensions.width <= 100) {
-        //     splitToRows(line)
-        // }
         drawText(line, x, y)
     })
 }
@@ -87,7 +92,6 @@ function renderCanvasContent(image) {
     img.src = image
     img.onload = () => {
         gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
-        // gCtx.drawImage(img, 0, 0)
         const meme = getMeme()
         drawTexts(meme)
     }
@@ -120,8 +124,18 @@ function onchangeTxt(elText) {
     renderMeme()
 }
 
-function onchangeColor(color) {
-    setColor(color, growIdx)
+function onchangeFillColor(color) {
+    setFillColor(color, growIdx)
+    renderMeme()
+}
+
+function onchangeStrokeColor(color) {
+    setStrokeColor(color, growIdx)
+    renderMeme()
+}
+
+function onchangeFillColor(color) {
+    setFillColor(color, growIdx)
     renderMeme()
 }
 
@@ -136,3 +150,41 @@ function onDecrease(ev) {
     updateFontSize(-5, growIdx)
     renderMeme()
 }
+
+function onSaveMeme(ev, elLink) {
+    const data = gElCanvas.toDataURL('image.png')
+    saveMemesToStorage(data)
+}
+
+
+function onMemesLink() {
+    document.querySelector('.gallery-container').classList.add('hide')
+    document.querySelector('.editor').classList.add('hide')
+    toggleSavedMemes()
+    memeGallery()
+}
+
+function toggleSavedMemes() {
+    document.querySelector('.saved-memes').classList.toggle('hide')
+}
+
+function memeGallery() {
+    const memes = restoreSavedMemes()
+    const strHTMLs = memes.map((meme, idx) =>
+        `
+        <div class="img-container">
+            <img onclick="onMemeSelect(${idx})" src="${meme}">
+        </div>
+        `
+    )
+    document.querySelector('.saved-memes').innerHTML = strHTMLs
+}
+
+function onMemeSelect(id) {
+    getMemeById(id)
+    toggleSavedMemes()
+    toggleCanvas()
+    renderMeme()
+}
+
+

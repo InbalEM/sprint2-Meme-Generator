@@ -4,36 +4,45 @@ var gImgs = [
     {
         id: 1,
         url: 'img/meme(square)/1.jpg',
-        keywords: ['1', 'cat']
+        keywords: ['funny', 'baby']
     },
     {
         id: 2,
         url: 'img/meme(square)/2.jpg',
-        keywords: ['2', 'cat']
+        keywords: ['cute', 'dog']
     },
     {
         id: 3,
         url: 'img/meme(square)/3.jpg',
-        keywords: ['3', 'cat']
+        keywords: ['cute', 'dog']
     },
     {
         id: 4,
         url: 'img/meme(square)/4.jpg',
-        keywords: ['4', 'cat']
+        keywords: ['cute', 'cat']
     },
     {
         id: 5,
         url: 'img/meme(square)/5.jpg',
-        keywords: ['5', 'cat']
+        keywords: ['baby', 'cute']
     }
-
 ]
 
+var filter = ''
+
 function getImgs() {
+    if (filter) {
+        return gImgs.filter(img => img.keywords.find(keyword => keyword === filter))
+    }
     return gImgs
 }
 
 function findImg(id) {
     return gImgs.find(img => img.id === id)
-
 }
+
+function filterGallery(filterBy) {
+    if (!filterBy) return
+    filter = filterBy
+}
+

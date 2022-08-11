@@ -1,22 +1,28 @@
 'use strict'
 
 function initGallery() {
+    restoreMemes()
+    restoreSavedMemes()
     renderGallery()
-    // addListeners()
 }
 
 function renderGallery() {
     const images = getImgs()
-    // console.log('images:', images)
     const strHTMLs = images.map(img =>
         `
         <div class="img-container">
             <img class="img" onclick="onImgSelect('${img.url}',${img.id} )" src="img/meme(square)/${img.id}.jpg">
         </div>
         `
-        // console.log('img.url:', img.url)
     )
     document.querySelector('.gallery').innerHTML = strHTMLs.join('')
+}
+
+function onFlexibleMeme(ev) {
+    ev.preventDefault()
+    const imgCount = getImgs().length
+    const imgId = getRandomInt(1, imgCount)
+    addFlexibleMeme(imgId)
 }
 
 function onImgSelect(imgUrl, id) {
@@ -27,7 +33,12 @@ function onImgSelect(imgUrl, id) {
 }
 
 function toggleGallery() {
-    document.querySelector('.gallery').classList.toggle('hide')
+    document.querySelector('.gallery-container').classList.toggle('hide')
+}
+
+function onFilterGallery(filterBy) {
+    filterGallery(filterBy)
+    renderGallery()
 }
 
 function addListeners() {
@@ -35,15 +46,8 @@ function addListeners() {
     addTouchListeners()
 }
 
-function addMouseListeners() {
-    gElCanvas.addEventListener('click', onImgSelect)
-    // gElCanvas.addEventListener('mousedown', onDown)
-    // gElCanvas.addEventListener('mouseup', onUp)
-}
-
-function addTouchListeners() {
-    // gElCanvas.addEventListener('touchmove', onMove)
-    // gElCanvas.addEventListener('touchstart', onDown)
-    gElCanvas.addEventListener('touchend', onImgSelect)
+function onGalleryLink() {
+    document.querySelector('.gallery-container').classList.remove('hide')
+    document.querySelector('.saved-memes').classList.add('hide')
 }
 

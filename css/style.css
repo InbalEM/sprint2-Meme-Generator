@@ -1,11 +1,11 @@
-*{
+* {
     box-sizing: border-box;
 }
 
 body {
     margin: 0;
     min-height: 100vh;
-    /* background-color: #22252c; */
+    background-color: #22252c;
 }
 
 .main-layout>*:not(.full) {
@@ -30,21 +30,11 @@ body {
     border-radius: 30px;
     background-image: linear-gradient(to right, #0c98b9, #33be6d);
     min-height: 100%;
-    /* display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr;
-    box-shadow: 0px 1px 0px #DBDBDB;
-    gap: 100; */
 }
-
 
 .main-header .main-nav-list a {
     color: #DBDBDB;
 }
-
-/* .main-header-container {
-    background-color: aquamarine;
-} */
 
 .main-logo {
     width: 152px;
@@ -59,19 +49,14 @@ body {
     padding: 10px 20px;
 }
 
-
 .gallery {
     min-height: 90%;
     display: grid;
-    /* grid-template-columns: repeat(auto-fit, minmax(200px, 400px)); */
     grid-template-columns: repeat(auto-fit, 400px);
     grid-template-rows: repeat(1fr);
-    /* grid-template-rows:  repeat(auto-fill, minmax(200px, 400px)); */
     justify-content: center;
     align-content: center;
     gap: 5rem;
-    /* margin-inline-start: 1rem;
-    margin-inline-end: 1rem; */
 }
 
 img {
@@ -90,15 +75,11 @@ img {
 .editor {
     min-height: 100%;
     min-width: 100%;
-    /* height: 100vh;
-    width: 100vh; */
-    /* background-color: gray; */
     display: grid;
     grid-template-rows: 1fr;
     grid-template-columns: 800px 500px;
     justify-content: center;
     align-content: center;
-    /* gap: 50px; */
 }
 
 .canvas-container {
@@ -107,8 +88,6 @@ img {
     height: 100%;
     width: 100%;
     background-color: aqua;
-    /* margin: auto; */
-    /* grid-row: 1 / -1; */
     width: 50vh;
     height: 50vh;
 }
@@ -119,11 +98,8 @@ img {
     color: #DBDBDB;
     height: 100%;
     width: 100%;
-    /* grid-row: 2 /-1; */
     display: flex;
     flex-direction: column;
-    /* grid-template-columns: 1fr;
-    grid-template-rows: repeat(3, 1fr); */
 }
 
 .editor-input>* {
@@ -136,16 +112,24 @@ canvas {
     box-sizing: border-box;
     height: 100%;
     width: 100%;
-    /* display: block; */
     margin: auto auto auto auto;
     background-color: #fff;
+}
+
+.saved-memes {
+    background-color: #0c98b9;
+    min-height: 90%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 400px);
+    grid-template-rows: repeat(1fr);
+    justify-content: center;
+    align-content: center;
+    gap: 5rem;
 }
 
 .hide {
     display: none;
 }
-
-/* flex helpers */
 
 .flex {
     display: flex;
