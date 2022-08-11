@@ -5,6 +5,8 @@ var gCtx
 
 var growIdx = 0
 
+const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
+
 function initMeme(imgId = 2) {
     addMeme(imgId)
     renderMeme()
@@ -75,16 +77,38 @@ function drawTexts(meme) {
         } else {
             var y = gElCanvas.height / 2
         }
+        meme.pos = {x,y}
+        console.log('meme:', meme)
+        console.log('getMeme():',getMeme() )
         drawText(line, x, y)
     })
 }
 
 function addListenersMeme() {
+    addMouseListeners()
+    addTouchListeners()
     window.addEventListener('resize', () => {
         resizeCanvas()
         const center = { x: gElCanvas.width / 2, y: gElCanvas.height / 2 }
         renderCanvas()
     })
+}
+
+function addMouseListeners() {
+    gElCanvas.addEventListener('mousedown', onDown)
+    // gElCanvas.addEventListener('mousemove', onMove)
+    // gElCanvas.addEventListener('mouseup', onUp)
+}
+
+function addTouchListeners() {
+    gElCanvas.addEventListener('touchstart', onDown)
+    // gElCanvas.addEventListener('touchmove', onMove)
+    // gElCanvas.addEventListener('touchend', onUp)
+}
+
+function onDown(ev){
+    const pos = getEvPos(ev)
+    if (!isLineClicked(pos)) return
 }
 
 function renderCanvasContent(image) {

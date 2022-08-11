@@ -39,6 +39,7 @@ function updateFontSize(incDecBy, idx) {
 
 function addMeme(imgId, lines = ['', '']) {
     gMeme = {
+        pos: {},
         selectedImgId: imgId,
         selectedLineIdx: 0,
         lines: []
@@ -71,4 +72,12 @@ function restoreMemes() {
 function restoreSavedMemes() {
     gSavedMemes = loadFromStorage(STORAGE_KEY_MEME)
     return gSavedMemes
+}
+
+function isLineClicked(clickedPos, idx){
+    let line = gMeme.lines[idx]
+    return (clickedPos.x >= line.x && clickedPos.x <= line.x + line.width 
+        && clickedPos.y >= line.y - line.height && clickedPos.y  <= line.y)
+
+
 }
