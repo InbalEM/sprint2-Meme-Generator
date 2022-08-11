@@ -12,84 +12,43 @@
 <!-- onload="initGallery()" -->
 
 <body onload="initGallery()">
-    <header class="header">
-        <div class="main-header ">
-            <div class="main-logo">
-                <img src="img/LOGO/LOGO.png" alt="">
+    <header class="main-header-container ">
+        <div class="main-header flex space-between align-center full main-layout">
+            <div class="main-logo flex">
+                <img class="logo" src="img/LOGO/LOGO.png" alt="">
             </div>
+            <nav class="main-nav">
+                <ul class="main-nav-list flex clean-list">
+                    <li><a class="flex align-center" href="#">gallery</a></li>
+                    <li><a class="flex align-center" href="#">About</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
     <!-- <img src="img/meme(square)/1.jpg" alt="" onclick="onImgSelect()"> -->
 
-    <section class="gallery">
-        <!-- <div class="img-container">
-            <img class="img" src="" alt="">
-        </div>
-        <div class="img-container">
-            <img class="img" src="img/meme-imgs(square)/2.jpg" alt="">
-        </div>
-        <div class="img-container">
-            <img class="img" src="img/meme-imgs(square)/3.jpg" alt="">
-        </div>
-        <div class="img-container">
-            <img class="img" src="img/meme-imgs(square)/4.jpg" alt="">
-        </div>
-        <div class="img-container">
-            <img class="img" src="img/meme-imgs(square)/5.jpg" alt="">
-        </div>
-        <div class="img-container">
-            <img class="img" src="img/meme-imgs(square)/6.jpg" alt="">
-        </div>
-        <div class="img-container">
-            <img class="img" src="img/meme-imgs (square)/7.jpg" alt="">
-        </div>
-        <div class="img-container">
-            <img class="img" src="img/meme-imgs (square)/9.jpg" alt="">
-        </div>
-        <div class="img-container">
-            <img class="img" src="img/meme-imgs (square)/10.jpg" alt="">
-        </div>
-        <div class="img-container">
-            <img class="img" src="img/meme-imgs (square)/11.jpg" alt="">
-        </div>
-        <div class="img-container">
-            <img class="img" src="img/meme-imgs (square)/12.jpg" alt="">
-        </div>
-        <div class="img-container">
-            <img class="img" src="img/meme-imgs (square)/13.jpg" alt="">
-        </div>
-        <div class="img-container">
-            <img class="img" src="img/meme-imgs (square)/14.jpg" alt="">
-        </div>
-        <div class="img-container">
-            <img class="img" src="img/meme-imgs (square)/15.jpg" alt="">
-        </div>
-        <div class="img-container">
-            <img class="img" src="img/meme-imgs (square)/16.jpg" alt="">
-        </div>
-        <div class="img-container">
-            <img class="img" src="img/meme-imgs (square)/17.jpg" alt="">
-        </div>
-        <div class="img-container">
-            <img class="img" src="img/meme-imgs (square)/18.jpg" alt="">
-        </div> -->
-    </section>
+    <section class="gallery "></section>
 
     <section class="editor hide">
         <div class="canvas-container">
-            <!-- <canvas id="my-canvas" height="450" width="450"></canvas> -->
+            <canvas id="my-canvas" height="450" width="450"></canvas>
         </div>
-        <label>
-            enter text:
-            <input type="text" id="test" name="test" oninput="onchangeTxt(this)" />
-        </label>
-        <button class="switchTexts" onclick="switchTexts()"> switch lines 🔁</button>
-        <input type="color" id="color" name="color" form="frmRegister" value="black"
-            onchange="onchangeColor(this.value)" />
+        <form action="" class="editor-input">
+            <label class="meme-text">
+                enter text:
+                <input type="text" id="text" name="meme-text" oninput="onchangeTxt(this)" />
+            </label>
+            <button class="switchTexts" onclick="switchTexts(event)"> switch lines 🔁</button>
+            <input type="color" id="color" name="color" form="frmRegister" value="black"
+                onchange="onchangeColor(this.value)" />
+            <button class="increase-decrease" onclick="onIncrease(event)">increase</button>
+            <button class="increase-decrease" onclick="onDecrease(event)">decrease</button>
+
+        </form>
     </section>
 
-    <script src="js/service/memeService.js"></script>
     <script src="js/service/galleryService.js"></script>
+    <script src="js/service/memeService.js"></script>
     <script src="js/galleryController.js"></script>
     <script src="js/memeController.js"></script>
 </body>

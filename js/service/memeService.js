@@ -32,6 +32,10 @@ function setColor(color, idx) {
     gMeme.lines[idx].color = color
 }
 
+function updateFontSize(incDecBy, idx){
+    gMeme.lines[idx].size += incDecBy
+}
+
 function addMeme(imgId, lines = ['top line', 'bottom line']) {
     gMeme = {
         selectedImgId: imgId,
