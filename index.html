@@ -11,10 +11,11 @@
 </head>
 
 <body onload="initGallery()">
-    <header class="main-header-container ">
+
+    <header class="main-header-container full">
         <div class="main-header flex space-between align-center full main-layout">
             <div class="main-logo flex">
-                <img class="logo" src="img/LOGO/LOGO.png" alt="">
+                <img class="logo img" src="img/LOGO/LOGO.png" alt="">
             </div>
             <nav class="main-nav">
                 <ul class="main-nav-list flex clean-list">
@@ -24,41 +25,73 @@
             </nav>
         </div>
     </header>
-    <section class="gallery-container">
+    <section class="gallery-container main-layout">
         <button onclick="onFlexibleMeme(event)">I'm flexible</button>
         <label for="filterImages">filer
-            <input type="email" id="filterImages" name="filterImages" list="filterList"
-                onchange="onFilterGallery(this.value)" />
+            <input class="main-layout" type="email" id="filterImages" name="filterImages" list="filterList"
+                onchange="onFilterGallery(this)" />
             <datalist id="filterList">
                 <option value="funny" label="funny" />
                 <option value="baby" label="baby" />
                 <option value="cat" label="cat" />
                 <option value="dog" label="dog" />
                 <option value="cute" label="cute" />
+                <option value="movie" label="movie" />
             </datalist>
         </label>
         <div class="gallery"></div>
     </section>
 
-    <section class="editor hide">
+    <section class="editor hide main-layout">
         <div class="canvas-container">
-            <canvas id="my-canvas" height="450" width="450"></canvas>
+            <canvas id="my-canvas" height="600" width="600"></canvas>
         </div>
         <form action="" class="editor-input">
             <label class="meme-text">
                 enter text:
                 <input type="text" id="text" name="meme-text" oninput="onchangeTxt(this)" />
             </label>
-            <button class="switchTexts" onclick="switchTexts(event)"> switch lines 🔁</button>
-            <input type="color" id="fillColor" name="fillColor" form="frmRegister" value="blue"
-                onchange="onchangeFillColor(this.value)" />
-            <input type="color" id="strokeColor" name="strokeColor" form="frmRegister" value="black"
-                onchange="onchangeStrokeColor(color)(this.value)" />
-            <button class="increase-decrease" onclick="onIncrease(event)">increase</button>
-            <button class="increase-decrease" onclick="onDecrease(event)">decrease</button>
-            <button class="save-meme"><a onclick="onSaveMeme(event,this)" href="#">save meme</a></button>
+            <label for="alignText increase-decrease">
+                <button class="alignText" onclick="onAlignText(event, 'center')"><img
+                        src="img/ICONS/center-text-alignment.png" alt=""></button>
+                <button class="alignText" onclick="onAlignText(event, 'left')"><img src="img/ICONS/align-to-left.png"
+                        alt=""></button>
+                <button class="alignText" onclick="onAlignText(event, 'right')"><img src="img/ICONS/align-to-right.png"
+                        alt=""></button>
+                <button class="increase-decrease" onclick="onIncrease(event)"><img
+                        src="img/ICONS/increase font - icon.png" alt=""></button>
+                <button class="increase-decrease" onclick="onDecrease(event)"><img
+                        src="img/ICONS/decrease font - icon.png" alt=""></button>
+            </label>
+            <label for="switchTexts">
+                <button class="switchTexts" onclick="switchTexts(event)"><img
+                        src="img/ICONS/up-and-down-opposite-double-arrows-side-by-side.png" alt=""></button>
+            </label>
+            <label for="colorCange">
+                <label for="colorFill">
+                    Fill Color:
+                    <input type="color" id="fillColor" name="fillColor" form="frmRegister" value="#0000ff"
+                        onchange="onchangeFillColor(this.value)" />
+                </label>
+                <label for="colorStroke">
+                    Stroke Color:
+                    <input type="color" id="strokeColor" name="strokeColor" form="frmRegister" value="black"
+                        onchange="onchangeStrokeColor(this.value)" />
+                </label>
+            </label>
 
-
+            <label for="">
+                <button class="save-meme"><a onclick="onSaveMeme()" href="#">save meme</a></button>
+                <button class="btn" onclick="uploadImg()">Upload Image from Canvas</button>
+            </label>
+            <div class="stickers-container">
+                <img class="sticker" src="img/stikers/0.png" onclick="onAddSticker('0')" alt="">
+                <img class="sticker" src="img/stikers/1.png" onclick="onAddSticker('1')" alt="">
+                <img class="sticker" src="img/stikers/2.png" onclick="onAddSticker('2')" alt="">
+                <img class="sticker" src="img/stikers/3.png" onclick="onAddSticker('3')" alt="">
+                <img class="sticker" src="img/stikers/4.png" onclick="onAddSticker('4')" alt="">
+                <img class="sticker" src="img/stikers/5.png" onclick="onAddSticker('5')" alt="">
+            </div>
         </form>
     </section>
 

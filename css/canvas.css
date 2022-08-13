@@ -1,0 +1,65 @@
+.canvas-container {
+    margin-top: 150px;
+    justify-self: center;
+    height: 100%;
+    width: 100%;
+    width: 50vh;
+    height: 50vh;
+}
+
+.editor {
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: 1fr;
+    gap: 20px
+}
+
+
+.editor {
+    min-height: 100%;
+    min-width: 100%;
+    display: grid;
+    grid-template-rows: repeat(1fr);
+    grid-template-columns: 600px 400px;
+    justify-content: center;
+    align-content: center;
+}
+
+
+.editor-input {
+    background-color: hsl(217, 25%, 94%, 0.11);
+    border-radius: 30px;
+    color: #DBDBDB;
+    display: flex;
+    flex-direction: column;
+}
+
+.editor-input>* {
+    padding: 1vh;
+}
+
+.saved-memes {
+    min-height: 90%;
+    display: grid;
+    grid-template-rows: repeat(1fr);
+    grid-template-columns: 600px 400px;
+    justify-content: center;
+    align-content: center;
+    gap: 5rem;
+}
+
+.stickers-container {
+    min-height: 1vh;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(1fr);
+    justify-content: center;
+    align-content: center;
+    gap: 1em;
+}
+
+.sticker {
+    height: 5vh;
+    width: 5vh;
+    background-color: none;
+}
+

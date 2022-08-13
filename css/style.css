@@ -1,160 +1,19 @@
-* {
-    box-sizing: border-box;
+@import "base.css";
+@import "layout.css";
+@import "header.css";
+@import "gallery.css";
+@import "canvas.css";
+@import "meme.css";
+
+@import "helpers.css";
+@import "mq.css";
+
+
+
+
+ .alignText>img,
+.switchTexts>img,
+.increase-decrease>img {
+    max-height: 40px;
+    max-width: 40px;
 }
-
-body {
-    margin: 0;
-    min-height: 100vh;
-    background-color: #22252c;
-}
-
-.main-layout>*:not(.full) {
-    max-width: 1440px;
-    margin-inline-end: auto;
-    margin-inline-start: auto;
-}
-
-.clean-list {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-}
-
-.main-header-container {
-    margin-bottom: 20px;
-    margin-top: 9px;
-    color: #DBDBDB;
-}
-
-.main-header {
-    border-radius: 30px;
-    background-image: linear-gradient(to right, #0c98b9, #33be6d);
-    min-height: 100%;
-}
-
-.main-header .main-nav-list a {
-    color: #DBDBDB;
-}
-
-.main-logo {
-    width: 152px;
-    height: 32px;
-    margin-left: 20px;
-}
-
-.main-header .main-nav-list a {
-    height: 50px;
-    width: 54px;
-    text-decoration: none;
-    padding: 10px 20px;
-}
-
-.gallery {
-    min-height: 90%;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, 400px);
-    grid-template-rows: repeat(1fr);
-    justify-content: center;
-    align-content: center;
-    gap: 5rem;
-}
-
-img {
-    height: 100%;
-    width: 100%;
-}
-
-.img-container {
-    height: 400px;
-    /* width: 400px; */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.editor {
-    min-height: 100%;
-    min-width: 100%;
-    display: grid;
-    grid-template-rows: 1fr;
-    grid-template-columns: 800px 500px;
-    justify-content: center;
-    align-content: center;
-}
-
-.canvas-container {
-    margin-top: 150px;
-    justify-self: center;
-    height: 100%;
-    width: 100%;
-    background-color: aqua;
-    width: 50vh;
-    height: 50vh;
-}
-
-.editor-input {
-    background-color: hsl(217, 25%, 94%, 0.11);
-    border-radius: 30px;
-    color: #DBDBDB;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-.editor-input>* {
-    padding: 10%;
-}
-
-canvas {
-    border-radius: 30px;
-    border: solid 1px black;
-    box-sizing: border-box;
-    height: 100%;
-    width: 100%;
-    margin: auto auto auto auto;
-    background-color: #fff;
-}
-
-.saved-memes {
-    background-color: #0c98b9;
-    min-height: 90%;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, 400px);
-    grid-template-rows: repeat(1fr);
-    justify-content: center;
-    align-content: center;
-    gap: 5rem;
-}
-
-.hide {
-    display: none;
-}
-
-.flex {
-    display: flex;
-}
-
-.flex.space-between {
-    justify-content: space-between;
-}
-
-.flex.align-center {
-    align-items: center;
-}
-
-.flex.column {
-    flex-direction: column;
-}
-
-/* 1400 */
-
-/* @media (max-width: 540px) {
-    .gallery {
-        grid-template-columns: repeat(auto-fill, minmax(50px, 200px));
-        grid-template-rows:  repeat(auto-fill, minmax(50px, 200px));
-        gap: 5rem;
-    }
-
-    
-} */

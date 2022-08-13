@@ -36,8 +36,9 @@ function toggleGallery() {
     document.querySelector('.gallery-container').classList.toggle('hide')
 }
 
-function onFilterGallery(filterBy) {
-    filterGallery(filterBy)
+function onFilterGallery(elFilterBy) {
+    filterGallery(elFilterBy.value)
+    elFilterBy.value = ''
     renderGallery()
 }
 

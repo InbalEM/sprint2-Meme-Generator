@@ -1,0 +1,36 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background-color: #22252c;
+    color: aliceblue;
+}
+
+img {
+    height: 100%;
+    width: 100%;
+}
+
+canvas {
+    border-radius: 30px;
+    border: solid 1px black;
+    box-sizing: border-box;
+    margin: auto auto auto auto;
+    background-color: #fff;
+}
+
+input {
+    border-radius: 29px;
+    background-color: #484a4f;
+    color: aliceblue;
+}
+
+button {
+    min-width: 87px;
+    min-height: 35px;
+    border-radius: 17px;
+    background-image: linear-gradient(to right, #0c98b9, #33be6d);
+}

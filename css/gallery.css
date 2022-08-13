@@ -1,0 +1,16 @@
+.gallery {
+    min-height: 90%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 400px);
+    grid-template-rows: repeat(1fr);
+    justify-content: center;
+    align-content: center;
+    gap: 5rem;
+}
+
+.img-container {
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

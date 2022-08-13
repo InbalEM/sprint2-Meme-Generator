@@ -1,0 +1,23 @@
+.main-header-container {
+    margin-bottom: 20px;
+    margin-top: 9px;
+}
+
+.main-header {
+    border-radius: 30px;
+    background-image: linear-gradient(to right, #0c98b9, #33be6d);
+    min-height: 100%;
+}
+
+.main-logo {
+    width: 152px;
+    height: 32px;
+    margin-left: 20px;
+}
+
+.main-header .main-nav-list a {
+    height: 50px;
+    width: 54px;
+    text-decoration: none;
+    padding: 10px 20px;
+}
