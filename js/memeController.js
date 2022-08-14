@@ -110,6 +110,14 @@ function getTextSize(line) {
     line.height = parseInt(gCtx.font)
 }
 
+function onAddLine(ev){
+    ev.preventDefault()
+    const text = document.querySelector('[name="meme-text"]').value
+    console.log('text:', text)
+
+
+}
+
 function addListenersMeme() {
     addMouseListeners()
     addTouchListeners()
@@ -135,11 +143,13 @@ function addTouchListeners() {
 
 function onDown(ev) {
     ev.preventDefault()
+    gLineDrag = ''
+    gStickerDrag = ''
     const pos = getEvPos(ev)
     const lineDrag = isLineClicked(pos)
     const stickerDrag = isStickerClicked(pos)
     if (!lineDrag && !stickerDrag) return
-
+    // console.log('lineDrag:', lineDrag)
     if (lineDrag) {
         setDragLine(true, lineDrag)
         gStartPos = pos
@@ -160,11 +170,12 @@ function onDown(ev) {
 function onMove(ev) {
     if (!gStartPos) return
     const pos = getEvPos(ev)
-    if (gStickerDrag.txt) {
+    if (gLineDrag) {
         moveLine(gLineDrag, pos.x, pos.y)
     }
-    if (gStickerDrag.stickerId) {
-        moveLine(gStickerDrag, pos.x, pos.y)
+    if (gStickerDrag) {
+        console.log('gStickerDrag:', gStickerDrag)
+        moveSticker(gStickerDrag, pos.x, pos.y)
     }
     renderMeme()
 }

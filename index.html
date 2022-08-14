@@ -12,12 +12,12 @@
 
 <body onload="initGallery()">
 
-    <header class="main-header-container full">
+    <header class="main-header-container full ">
         <div class="main-header flex space-between align-center full main-layout">
             <div class="main-logo flex">
                 <img class="logo img" src="img/LOGO/LOGO.png" alt="">
             </div>
-            <nav class="main-nav">
+            <nav class="main-nav ">
                 <ul class="main-nav-list flex clean-list">
                     <li><a class="flex align-center" href="#" onclick="onGalleryLink()">gallery</a></li>
                     <li><a class="flex align-center" href="#" onclick="onMemesLink()">memes</a></li>
@@ -25,7 +25,8 @@
             </nav>
         </div>
     </header>
-    <section class="gallery-container main-layout">
+    <section class="gallery-container ">
+        <div class = "gallery-input">
         <button onclick="onFlexibleMeme(event)">I'm flexible</button>
         <label for="filterImages">filer
             <input class="main-layout" type="email" id="filterImages" name="filterImages" list="filterList"
@@ -39,6 +40,7 @@
                 <option value="movie" label="movie" />
             </datalist>
         </label>
+    </div>
         <div class="gallery"></div>
     </section>
 
@@ -51,6 +53,7 @@
                 enter text:
                 <input type="text" id="text" name="meme-text" oninput="onchangeTxt(this)" />
             </label>
+            <!-- <button onclick= "onAddLine(event)">+</button> -->
             <label for="alignText increase-decrease">
                 <button class="alignText" onclick="onAlignText(event, 'center')"><img
                         src="img/ICONS/center-text-alignment.png" alt=""></button>

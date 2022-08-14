@@ -79,8 +79,21 @@ function addMeme(imgId, lines = ['top line', 'bottom line']) {
             }
         )
     )
-
     return gMeme
+}
+
+function addLine(){
+        gMeme.lines.push(
+            {
+                txt: '',
+                size: 20,
+                align: 'center',
+                fillColor: '#0000ff',
+                strokeColor: 'black',
+                pos: {},
+                isDrag: false
+            }
+        )
 }
 
 function setPos(line, x, y) {
@@ -143,8 +156,8 @@ function isStickerClicked(clickedPos) {
     const stickers = gMeme.stickers
     const sticker = stickers.find(sticker => {
         var stickerPos = sticker.pos
-        return (clickedPos.x >= stickerPos.x && clickedPos.x <= stickerPos.x + 80
-            && clickedPos.y >= stickerPos.y - 80 && clickedPos.y >= stickerPos.y)
+        return (clickedPos.x >= stickerPos.x && clickedPos.x <= stickerPos.x + 50
+            && clickedPos.y >= stickerPos.y - 50 && clickedPos.y >= stickerPos.y)
     })
     if (sticker) {
         return sticker
@@ -159,12 +172,18 @@ function setDragLine(isDrag, line) {
 
 function setDragSticker(isDrag, sticker) {
     if (!sticker) return
+    console.log('sticker:', sticker)
     sticker.isDrag = isDrag
 }
 
 function moveLine(line, dx, dy) {
     line.pos.x = dx
     line.pos.y = dy
+}
+
+function moveSticker(sticker, dx, dy) {
+    sticker.pos.x = dx
+    sticker.pos.y = dy
 }
 
 function memePos(meme) {

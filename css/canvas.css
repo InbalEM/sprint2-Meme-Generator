@@ -13,17 +13,17 @@
     gap: 20px
 }
 
-
 .editor {
     min-height: 100%;
     min-width: 100%;
     display: grid;
+    /* grid-template-rows:repeat();
+    grid-template-columns: */
     grid-template-rows: repeat(1fr);
     grid-template-columns: 600px 400px;
     justify-content: center;
     align-content: center;
 }
-
 
 .editor-input {
     background-color: hsl(217, 25%, 94%, 0.11);
