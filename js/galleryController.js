@@ -26,7 +26,7 @@ function onFlexibleMeme(ev) {
 }
 
 function onImgSelect(imgUrl, id) {
-    renderCanvasContent(`'${imgUrl}'`)
+    // renderCanvasContent(`'${imgUrl}'`)
     initMeme(id)
     toggleGallery()
     toggleCanvas()

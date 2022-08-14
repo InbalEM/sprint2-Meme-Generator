@@ -112,8 +112,9 @@ function getTextSize(line) {
 
 function onAddLine(ev){
     ev.preventDefault()
-    const text = document.querySelector('[name="meme-text"]').value
-    console.log('text:', text)
+    // const text = document.querySelector('[name="meme-text"]').value
+    // console.log('text:', text)
+    
 
 
 }

@@ -13,7 +13,7 @@
 <body onload="initGallery()">
 
     <header class="main-header-container full ">
-        <div class="main-header flex space-between align-center full main-layout">
+        <div class="main-header flex align-center main-layout">
             <div class="main-logo flex">
                 <img class="logo img" src="img/LOGO/LOGO.png" alt="">
             </div>
@@ -25,7 +25,7 @@
             </nav>
         </div>
     </header>
-    <section class="gallery-container ">
+    <section class="gallery-container main-layout">
         <div class = "gallery-input">
         <button onclick="onFlexibleMeme(event)">I'm flexible</button>
         <label for="filterImages">filer
@@ -41,7 +41,7 @@
             </datalist>
         </label>
     </div>
-        <div class="gallery"></div>
+        <div class="gallery main-layout"></div>
     </section>
 
     <section class="editor hide main-layout">
@@ -53,7 +53,6 @@
                 enter text:
                 <input type="text" id="text" name="meme-text" oninput="onchangeTxt(this)" />
             </label>
-            <!-- <button onclick= "onAddLine(event)">+</button> -->
             <label for="alignText increase-decrease">
                 <button class="alignText" onclick="onAlignText(event, 'center')"><img
                         src="img/ICONS/center-text-alignment.png" alt=""></button>

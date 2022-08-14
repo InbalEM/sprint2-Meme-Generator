@@ -37,7 +37,6 @@ function setFillColor(color, line) {
     line.fillColor = color
 }
 
-
 function setStrokeColorIdx(color, idx) {
     gMeme.lines[idx].strokeColor = color
 }
